@@ -1,30 +1,15 @@
-import React from 'react';
-import { useState } from 'react';
-import { AutoRotatingCarousel, Slide } from 'material-auto-rotating-carousel';
-import { Logs } from 'services/axios.service';
 
-const Index = ({ logsData }) => {
-  const [logs, setLogs] = useState(logsData);
+import Layout from "../components/Layout";
+import Carousel from "../components/carousel"
+import MerchantGrid from "../components/grid"
+import { List } from '@material-ui/core';
 
-  const handleClick = async () => {
-    const results = await fetch('api/logs')
-    const resultsData = await results.json()
-    console.log('res', resultsData);
-  }
 
-  return (
-    <div>
-      <p onClick={() => handleClick()}>tes</p>
-      {logs.length > 0 && (logs.map((log, i) => (
-        <p key={i}>{log.status}</p>
-      )))}
-    </div>
-  )
-}
+const MainView = props => <Layout>
+    <List style={{maxHeight: 'calc(90vh - 55px)', overflow: 'scroll',paddingTop:'0px'}}>
+    <Carousel></Carousel><MerchantGrid></MerchantGrid>
+    <Carousel></Carousel>
+    <Carousel></Carousel>
+    </List></Layout>;
 
-Index.getInitialProps = async () => {
-  const results = await Logs()
-  return { logsData: results }
-}
-
-export default Index
+export default MainView;

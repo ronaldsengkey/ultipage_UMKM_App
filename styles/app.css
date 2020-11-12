@@ -1,0 +1,8 @@
+.App {
+    position: relative;
+}
+
+svg {
+    height: 30px;
+    cursor: pointer;
+}

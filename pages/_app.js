@@ -1,40 +1,13 @@
-import React from 'react';
-import Head from 'next/head';
-import Navbar from 'components/navbar';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import '../styles/globals.css'
+import "../components/Header.scss";
 
-const defaultTheme = createMuiTheme({
-  typography: {
-    fontSize: 14
-  },
-  palette: {
-    text: {
-      secondary: 'rgba(255, 255, 255, .8)',
-    },
-    primary: {
-      main: '#18A6AB',
-    },
-    secondary: {
-      main: '#999',
-    },
-  }
-})
+import "../components/Layout.scss";
+import "../components/index.scss";
+import "../components/NavBar.scss";
+import "../components/NavButton.scss";
 
 function MyApp({ Component, pageProps }) {
-  return (
-    <React.Fragment>
-      <Head>
-        <title>Ulti Page</title>
-        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
-      </Head>
-      <MuiThemeProvider theme={defaultTheme}>
-        <CssBaseline />
-        <Navbar />
-        <Component {...pageProps} />
-      </MuiThemeProvider>
-    </React.Fragment>
-  )
+  return <Component {...pageProps} />
 }
 
 export default MyApp
