@@ -9,14 +9,11 @@ const defaultTheme = createMuiTheme({
     fontSize: 14
   },
   palette: {
-    text: {
-      secondary: 'rgba(255, 255, 255, .8)',
+    background: {
+      default: '#EFEFEF'
     },
     primary: {
       main: '#18A6AB',
-    },
-    secondary: {
-      main: '#999',
     },
   }
 })
@@ -30,7 +27,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <MuiThemeProvider theme={defaultTheme}>
         <CssBaseline />
-        <Navbar />
+        {/* <Navbar /> */}
         <Component {...pageProps} />
       </MuiThemeProvider>
     </React.Fragment>
