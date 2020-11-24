@@ -5,22 +5,7 @@ const axiosConfig = {
   timeout: 30000
 }
 
-// export const Logs = async () => {
-//   axiosConfig.headers = {
-//     signature: 'signature',
-//     token: 'token',
-//     param: 'all'
-//   }
-//   const results = await axiosGetCancellable(`log/log/`, axiosConfig);
-//   if (!results) {
-//     console.log('Canceled')
-//   } else {
-//     return results.data.data
-//   }
-// }
-
-
-export const NotLogs = async () => {
+export const Logs = async () => {
   axiosConfig.headers = {
     signature: 'signature',
     token: 'token',
@@ -31,5 +16,81 @@ export const NotLogs = async () => {
     console.log('Canceled')
   } else {
     return results.data.data
+  }
+}
+
+
+export const GetCategory = async () => {
+  axiosConfig.headers = {
+    signature: 'c5399e4839a73e1a138a84e083363d33270c4a6b67d104c6a7f9d8e9949d2259a187d3d4321a8db011cbda2181d31d9f05c615e5d83b4bc827a03c836f2adf4e63732e5a13a00ff9e7465612f1730edfcbfafc683dd62ff53eab25a5d741d9643b3af2790df7cc9cfb286b9430faa2d5ebc544e221fab86e693e07ef37008a6b02ddc75408af7039dd6c0892e3930355ce30474431c3626bf5d9f7f39ae1fa5e4af3a0138fa7112c5763b83939e3d200b925e66a3fac2ea23a038aca2ab5507206cdfa66066fad83c10bf7e24498ae78d8fbfbce207a6945c4c0fc83e1077674891f7498e665799875a90ca87bfade9b72751c195a0a09db4f630519bb1945df09cb957de72dacbb76038961b56fb7eecddd63fe6da365e6a36c03b1da822bc114831b254325979391de5c7570338e3bc55fc35ee34cdfe885ed4c996b484e9a616b82f50230aad143f26497c68a0b7d0de258767d73f6cc50a64fb228ad2ae70d927df6a8414a9794a47c7b96ce8aa9d08d759a82bd73ddf98aeda8cfd2a530e9ce08b0c1587df263a704a2421f740e6ecc36e655a298fa73256498d6f53cbf747141f2b20b455dfc951515b19bcf91d4ddd94ce9dad3cfb0a25b03999f448f2ede57453657d0b55b952bb1348580bde6dc89e34454489709f1fda8693004285fa3e6cb93785f009895406eac5e99c21ca598c87a0a281125',
+  }
+  const results = await axiosGetCancellable(`outlet/ultipage/category`, axiosConfig);
+  if (!results) {
+    console.log('Canceled')
+  } else {
+    return results.data.data
+  }
+}
+
+export const GetCategoryMost = async () => {
+  axiosConfig.headers = {
+    signature: 'c5399e4839a73e1a138a84e083363d33270c4a6b67d104c6a7f9d8e9949d2259a187d3d4321a8db011cbda2181d31d9f05c615e5d83b4bc827a03c836f2adf4e63732e5a13a00ff9e7465612f1730edfcbfafc683dd62ff53eab25a5d741d9643b3af2790df7cc9cfb286b9430faa2d5ebc544e221fab86e693e07ef37008a6b02ddc75408af7039dd6c0892e3930355ce30474431c3626bf5d9f7f39ae1fa5e4af3a0138fa7112c5763b83939e3d200b925e66a3fac2ea23a038aca2ab5507206cdfa66066fad83c10bf7e24498ae78d8fbfbce207a6945c4c0fc83e1077674891f7498e665799875a90ca87bfade9b72751c195a0a09db4f630519bb1945df09cb957de72dacbb76038961b56fb7eecddd63fe6da365e6a36c03b1da822bc114831b254325979391de5c7570338e3bc55fc35ee34cdfe885ed4c996b484e9a616b82f50230aad143f26497c68a0b7d0de258767d73f6cc50a64fb228ad2ae70d927df6a8414a9794a47c7b96ce8aa9d08d759a82bd73ddf98aeda8cfd2a530e9ce08b0c1587df263a704a2421f740e6ecc36e655a298fa73256498d6f53cbf747141f2b20b455dfc951515b19bcf91d4ddd94ce9dad3cfb0a25b03999f448f2ede57453657d0b55b952bb1348580bde6dc89e34454489709f1fda8693004285fa3e6cb93785f009895406eac5e99c21ca598c87a0a281125',
+  }
+  const results = await axiosGetCancellable(`outlet/ultipage/mostsearched`, axiosConfig);
+  if (!results) {
+    console.log('Canceled')
+  } else {
+    return results.data.data
+  }
+}
+
+export const Search = async ({keyword}) => {
+  axiosConfig.headers = {
+    signature: 'c5399e4839a73e1a138a84e083363d33270c4a6b67d104c6a7f9d8e9949d2259a187d3d4321a8db011cbda2181d31d9f05c615e5d83b4bc827a03c836f2adf4e63732e5a13a00ff9e7465612f1730edfcbfafc683dd62ff53eab25a5d741d9643b3af2790df7cc9cfb286b9430faa2d5ebc544e221fab86e693e07ef37008a6b02ddc75408af7039dd6c0892e3930355ce30474431c3626bf5d9f7f39ae1fa5e4af3a0138fa7112c5763b83939e3d200b925e66a3fac2ea23a038aca2ab5507206cdfa66066fad83c10bf7e24498ae78d8fbfbce207a6945c4c0fc83e1077674891f7498e665799875a90ca87bfade9b72751c195a0a09db4f630519bb1945df09cb957de72dacbb76038961b56fb7eecddd63fe6da365e6a36c03b1da822bc114831b254325979391de5c7570338e3bc55fc35ee34cdfe885ed4c996b484e9a616b82f50230aad143f26497c68a0b7d0de258767d73f6cc50a64fb228ad2ae70d927df6a8414a9794a47c7b96ce8aa9d08d759a82bd73ddf98aeda8cfd2a530e9ce08b0c1587df263a704a2421f740e6ecc36e655a298fa73256498d6f53cbf747141f2b20b455dfc951515b19bcf91d4ddd94ce9dad3cfb0a25b03999f448f2ede57453657d0b55b952bb1348580bde6dc89e34454489709f1fda8693004285fa3e6cb93785f009895406eac5e99c21ca598c87a0a281125',
+    param:JSON.stringify({category:keyword})
+  }
+  const results = await axiosGetCancellable(`outlet/ultipage/product`, axiosConfig);
+  if (!results) {
+    console.log('Canceled')
+  } else {
+    return results.data
+  }
+}
+
+export const GetCity = async () => {
+  axiosConfig.headers = {
+    signature: 'c5399e4839a73e1a138a84e083363d33270c4a6b67d104c6a7f9d8e9949d2259a187d3d4321a8db011cbda2181d31d9f05c615e5d83b4bc827a03c836f2adf4e63732e5a13a00ff9e7465612f1730edfcbfafc683dd62ff53eab25a5d741d9643b3af2790df7cc9cfb286b9430faa2d5ebc544e221fab86e693e07ef37008a6b02ddc75408af7039dd6c0892e3930355ce30474431c3626bf5d9f7f39ae1fa5e4af3a0138fa7112c5763b83939e3d200b925e66a3fac2ea23a038aca2ab5507206cdfa66066fad83c10bf7e24498ae78d8fbfbce207a6945c4c0fc83e1077674891f7498e665799875a90ca87bfade9b72751c195a0a09db4f630519bb1945df09cb957de72dacbb76038961b56fb7eecddd63fe6da365e6a36c03b1da822bc114831b254325979391de5c7570338e3bc55fc35ee34cdfe885ed4c996b484e9a616b82f50230aad143f26497c68a0b7d0de258767d73f6cc50a64fb228ad2ae70d927df6a8414a9794a47c7b96ce8aa9d08d759a82bd73ddf98aeda8cfd2a530e9ce08b0c1587df263a704a2421f740e6ecc36e655a298fa73256498d6f53cbf747141f2b20b455dfc951515b19bcf91d4ddd94ce9dad3cfb0a25b03999f448f2ede57453657d0b55b952bb1348580bde6dc89e34454489709f1fda8693004285fa3e6cb93785f009895406eac5e99c21ca598c87a0a281125',
+  }
+  const results = await axiosGetCancellable(`outlet/ultipage/city`, axiosConfig);
+  if (!results) {
+    console.log('Canceled')
+  } else {
+    return results.data.data
+  }
+}
+
+export const getPromo = async ({cityId}) => {
+  axiosConfig.headers = {
+    signature: 'c5399e4839a73e1a138a84e083363d33270c4a6b67d104c6a7f9d8e9949d2259a187d3d4321a8db011cbda2181d31d9f05c615e5d83b4bc827a03c836f2adf4e63732e5a13a00ff9e7465612f1730edfcbfafc683dd62ff53eab25a5d741d9643b3af2790df7cc9cfb286b9430faa2d5ebc544e221fab86e693e07ef37008a6b02ddc75408af7039dd6c0892e3930355ce30474431c3626bf5d9f7f39ae1fa5e4af3a0138fa7112c5763b83939e3d200b925e66a3fac2ea23a038aca2ab5507206cdfa66066fad83c10bf7e24498ae78d8fbfbce207a6945c4c0fc83e1077674891f7498e665799875a90ca87bfade9b72751c195a0a09db4f630519bb1945df09cb957de72dacbb76038961b56fb7eecddd63fe6da365e6a36c03b1da822bc114831b254325979391de5c7570338e3bc55fc35ee34cdfe885ed4c996b484e9a616b82f50230aad143f26497c68a0b7d0de258767d73f6cc50a64fb228ad2ae70d927df6a8414a9794a47c7b96ce8aa9d08d759a82bd73ddf98aeda8cfd2a530e9ce08b0c1587df263a704a2421f740e6ecc36e655a298fa73256498d6f53cbf747141f2b20b455dfc951515b19bcf91d4ddd94ce9dad3cfb0a25b03999f448f2ede57453657d0b55b952bb1348580bde6dc89e34454489709f1fda8693004285fa3e6cb93785f009895406eac5e99c21ca598c87a0a281125',
+    param:JSON.stringify({cityId:cityId})
+  }
+  const results = await axiosGetCancellable(`outlet/ultipage/promo`, axiosConfig);
+  if (!results) {
+    console.log('Canceled')
+  } else {
+    return results.data.data
+  }
+}
+
+export const getHomeSection = async ({cityId}) => {
+  axiosConfig.headers = {
+    signature: 'c5399e4839a73e1a138a84e083363d33270c4a6b67d104c6a7f9d8e9949d2259a187d3d4321a8db011cbda2181d31d9f05c615e5d83b4bc827a03c836f2adf4e63732e5a13a00ff9e7465612f1730edfcbfafc683dd62ff53eab25a5d741d9643b3af2790df7cc9cfb286b9430faa2d5ebc544e221fab86e693e07ef37008a6b02ddc75408af7039dd6c0892e3930355ce30474431c3626bf5d9f7f39ae1fa5e4af3a0138fa7112c5763b83939e3d200b925e66a3fac2ea23a038aca2ab5507206cdfa66066fad83c10bf7e24498ae78d8fbfbce207a6945c4c0fc83e1077674891f7498e665799875a90ca87bfade9b72751c195a0a09db4f630519bb1945df09cb957de72dacbb76038961b56fb7eecddd63fe6da365e6a36c03b1da822bc114831b254325979391de5c7570338e3bc55fc35ee34cdfe885ed4c996b484e9a616b82f50230aad143f26497c68a0b7d0de258767d73f6cc50a64fb228ad2ae70d927df6a8414a9794a47c7b96ce8aa9d08d759a82bd73ddf98aeda8cfd2a530e9ce08b0c1587df263a704a2421f740e6ecc36e655a298fa73256498d6f53cbf747141f2b20b455dfc951515b19bcf91d4ddd94ce9dad3cfb0a25b03999f448f2ede57453657d0b55b952bb1348580bde6dc89e34454489709f1fda8693004285fa3e6cb93785f009895406eac5e99c21ca598c87a0a281125',
+    param:JSON.stringify({cityId:cityId})
+  }
+  const results = await axiosGetCancellable(`outlet/ultipage/partnerhome`, axiosConfig);
+  if (!results) {
+    console.log('Canceled')
+  } else {
+    return results.data
   }
 }

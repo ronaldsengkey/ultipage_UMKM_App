@@ -56,10 +56,10 @@ function CarouselSlide(props) {
 
 
     
-function App() {
-    const [index, setIndex] = useState(2);
-    const content = SLIDE_INFO[index];
-    const numSlides = SLIDE_INFO.length;
+function App(props) {
+    const [index, setIndex] = useState(0);
+    const content = props.data[index];
+    const numSlides = props.data.length;
     const [slideIn, setSlideIn] = useState(true);
     const [slideDirection, setSlideDirection] = useState('down');
 

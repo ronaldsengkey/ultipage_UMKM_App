@@ -5,6 +5,9 @@ import Select from '@material-ui/core/Select';
 import { ReactSVG } from 'react-svg';
 import MenuItem from '@material-ui/core/MenuItem';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import { useRouter } from 'next/router'
 
 const useStyles = makeStyles((theme) => ({
   AppBar: {
@@ -25,15 +28,19 @@ const useStyles = makeStyles((theme) => ({
   asd: {
     height:40
   },
+  title:{
+    fontSize:'16', fontWeight:"bold",marginLeft:'5px',marginTop:'2px'
+  }
 }))
 
-export default function Navbar() {
+export default function Navbar(props) {
   const classes = useStyles();
   const [age, setAge] = React.useState('');
   const [city, setCity] = React.useState('');
 
   const handleChange = (event) => {
     setAge(event.target.value);
+    props.onChangeCity(event.target.value);
   };
 
   const fetchCity = (event) => {
@@ -69,11 +76,7 @@ export default function Navbar() {
           <MenuItem value="" disabled>
             Pilih kota
           </MenuItem>
-          <MenuItem value={1}>Malang</MenuItem>
-          <MenuItem value={2}>Madiun</MenuItem>
-          <MenuItem value={3}>Bojonegoro</MenuItem>
-          <MenuItem value={4}>Jember</MenuItem>
-          <MenuItem value={5}>Pamekasan</MenuItem>
+          {props.cities.map((e)=><MenuItem value={e.id}>{e.name}</MenuItem>)}
         </Select>
       </FormControl>
       </Toolbar>
@@ -107,22 +110,25 @@ export function NavbarSearch() {
   );
 }
 
-export function SearchByCategoryHeader() {
+export function SearchResultHeader(props) {
   const classes = useStyles();
+  const router = useRouter()
 
 
   return (
     <AppBar
       position="sticky"
       color="default"
-      classes={{
-        root: classes.AppBar
-      }}
       
     >
-      
-        <FaChevronLeft/>
-<div className={classes.asd}></div>
+      <Toolbar>
+          <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu"  onClick={() => router.back()} size='small'>
+            <FaChevronLeft />
+          </IconButton>
+          <Typography className={classes.title}>
+          {props.title}
+          </Typography>
+        </Toolbar>  
     </AppBar>
   );
 }

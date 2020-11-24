@@ -10,3 +10,4 @@ const LANGUAGES = [
 ];
 
 export default LANGUAGES;
+

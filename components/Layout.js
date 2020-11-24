@@ -18,7 +18,7 @@ const Layout = props => {
         <meta charSet="utf-8" />
       </Head>
 
-      <Header appTitle={appTitle} />
+      <Header appTitle={appTitle} onChangeCity={props.onChangeCity} cities={props.cities}/>
       <div className="Content">{props.children}</div>
       <NavBar navButtons={navButtons} />
     </div>

@@ -1,7 +1,7 @@
 // components/Layout.js
 import Head from "next/head";
 
-import {NavbarSearch }from "./Header";
+import {NavbarSearch,SearchResultHeader }from "./Header";
 import NavBar from "./NavBar";
 
 
@@ -26,3 +26,20 @@ const Layout = props => {
 };
 
 export default Layout;
+
+
+export const SearchResultLayout = props => {
+
+  return (
+    <div className="Layout">
+      <Head>
+      <title>UMKM</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta charSet="utf-8" />
+      </Head>
+
+      <SearchResultHeader title={props.title} />
+      <div className="Content">{props.children}</div>
+    </div>
+  );
+};

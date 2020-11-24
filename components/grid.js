@@ -2,10 +2,15 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import GridList from '@material-ui/core/GridList';
+import GridListTile from '@material-ui/core/GridListTile';
+import GridListTileBar from '@material-ui/core/GridListTileBar';
+import ListSubheader from '@material-ui/core/ListSubheader';
+import IconButton from '@material-ui/core/IconButton';
+import InfoIcon from '@material-ui/icons/Info';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
   },
   grids: {
     width: '100%',
@@ -16,8 +21,8 @@ const useStyles = makeStyles((theme) => ({
   },
   paper: {
     // padding: theme.spacing(1),
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
+    
+    margin:'auto',
     textAlign: 'center',
     height: '100px',
     width: '100px',
@@ -32,51 +37,55 @@ const useStyles = makeStyles((theme) => ({
   bottomText: {
     marginBlockEnd: '10px',
   marginBlockStart: '5px',
+  textAlign: 'center'
+  }
+  ,
+  topText: {
+    color: '#5D5D5D',
+    paddingLeft:'10px',
+    fontWeight: 'bold'
   }
 
   
 }));
 
-export default function NestedGrid() {
+export default function NestedGrid(props) {
   const classes = useStyles();
-
-  function FormRow() {
-    return (
-      <React.Fragment>
-        <Grid item xs={4}>
-          <Paper className={classes.paper}><img src='https://images-na.ssl-images-amazon.com/images/I/51cc84hBwRL.jpg'className={classes.Media} />
-          
-          </Paper>
-          <p className={classes.bottomText}>hehehehe</p>
-        </Grid>
-        <Grid item xs={4}>
-          <Paper className={classes.paper}><img src='https://images-na.ssl-images-amazon.com/images/I/51cc84hBwRL.jpg'className={classes.Media} />
-          
-          </Paper>
-          <p className={classes.bottomText}>hehehehe</p>
-        </Grid><Grid item xs={4}>
-          <Paper className={classes.paper}><img src='https://images-na.ssl-images-amazon.com/images/I/51cc84hBwRL.jpg'className={classes.Media} />
-          
-          </Paper>
-          <p className={classes.bottomText}>hehehehe</p>
-        </Grid>
-      </React.Fragment>
-    );
-  }
+  
 
   return (
-    <div className={classes.root}>
-      <Grid container spacing={1} className={classes.grids}>
-        <Grid container item xs={12}>
-          <FormRow />
+<div className={classes.root}>
+<p className={classes.topText}>{props.title}</p>
+      <GridList cellHeight='auto'  className={classes.gridList}>
+        {(props.data||[]).map((a) => (
+          <Grid item xs={4} flexBasis="0%" flexGrow="0">
+          <Paper className={classes.paper}><img src={a.path[0].f2} className={classes.Media} />
+          
+          </Paper>
+        <p className={classes.bottomText}>{a.name}</p>
         </Grid>
-        <Grid container item xs={12}>
-          <FormRow />
+        ))}
+      </GridList>
+    </div>
+  );
+}
+
+export function PartnerGrid(props) {
+  const classes = useStyles();
+
+  return (
+<div className={classes.root}>
+<p className={classes.topText}>{props.title}</p>
+      <GridList cellHeight={180} className={classes.gridList}>
+        {(props.data||[]).map((a) => (
+          <Grid item xs={4}>
+          <Paper className={classes.paper}><img src={a.partner_logo} className={classes.Media} />
+          
+          </Paper>
+        <p className={classes.bottomText}>{a.partner_name}</p>
         </Grid>
-        <Grid container item xs={12}>
-          <FormRow />
-        </Grid>
-      </Grid>
+        ))}
+      </GridList>
     </div>
   );
 }
