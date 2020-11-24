@@ -1,13 +1,10 @@
 import React from 'react';
+import Link from 'next/link';
 import { makeStyles } from '@material-ui/core/styles';
-import Paper from '@material-ui/core/Paper';
+import { Card, Container, Typography } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
+import { fontSizeDownMd } from 'styles/style';
+import Image from 'material-ui-image';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,6 +15,14 @@ const useStyles = makeStyles((theme) => ({
     alignItems:'center',
     textAlign:'center',
     margin:0
+  },
+  cardTypo: {
+    textAlign: 'center',
+    paddingTop: '8px',
+    [theme.breakpoints.down('sm')]: {
+      fontSize: fontSizeDownMd,
+      lineHeight: 1.2
+    }
   },
   paper: {
     // padding: theme.spacing(1),
@@ -42,7 +47,6 @@ const useStyles = makeStyles((theme) => ({
   ,
   topText: {
     color: '#5D5D5D',
-    paddingLeft:'10px',
     fontWeight: 'bold'
   }
 
@@ -54,19 +58,37 @@ export default function NestedGrid(props) {
   
 
   return (
-<div className={classes.root}>
-<p className={classes.topText}>{props.title}</p>
-      <GridList cellHeight='auto'  className={classes.gridList}>
-        {(props.data||[]).map((a) => (
-          <Grid item xs={4} flexBasis="0%" flexGrow="0">
-          <Paper className={classes.paper}><img src={a.path[0].f2} className={classes.Media} />
-          
-          </Paper>
-        <p className={classes.bottomText}>{a.name}</p>
-        </Grid>
+    <Container>
+      <p className={classes.topText}>{props.title}</p>
+      <Grid container spacing={2}>
+        {(props.data||[]).map((a, i) => (
+          <Link href={{
+            pathname: `/partner/${a.partner_id}`,
+            query: {
+                  img: a.path[0].f2,
+                  name: a.name,
+                  descriptions: a.descriptions
+                },
+              }
+            }
+            key={i}
+          >
+            <Grid item xs={4}>
+              <Card>
+                <Image
+                  src={a.path[0].f2}
+                  imageStyle={{objectFit: 'cover'}}
+                  disableSpinner
+                />
+              </Card>
+              <Typography variant="body1" component="p" classes={{root: classes.cardTypo}}>
+                {a.name}
+              </Typography>
+            </Grid>
+          </Link>
         ))}
-      </GridList>
-    </div>
+      </Grid>
+    </Container>
   );
 }
 
@@ -74,18 +96,26 @@ export function PartnerGrid(props) {
   const classes = useStyles();
 
   return (
-<div className={classes.root}>
-<p className={classes.topText}>{props.title}</p>
-      <GridList cellHeight={180} className={classes.gridList}>
-        {(props.data||[]).map((a) => (
-          <Grid item xs={4}>
-          <Paper className={classes.paper}><img src={a.partner_logo} className={classes.Media} />
-          
-          </Paper>
-        <p className={classes.bottomText}>{a.partner_name}</p>
-        </Grid>
+<Container>
+  <p className={classes.topText}>{props.title}</p>
+      <Grid container spacing={2}>
+        {(props.data||[]).map((a, i) => (
+          <Link href={`/partner/${a.partner_id}`} key={i}>
+            <Grid item xs={4}>
+              <Card>
+                <Image
+                  src={a.partner_logo}
+                  imageStyle={{objectFit: 'cover'}}
+                  disableSpinner
+                />
+              </Card>
+              <Typography variant="body1" component="p" classes={{root: classes.cardTypo}}>
+                {a.partner_name}
+              </Typography>
+            </Grid>
+          </Link>
         ))}
-      </GridList>
-    </div>
+      </Grid>
+    </Container>
   );
 }

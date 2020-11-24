@@ -55,7 +55,7 @@ export default class SearchResult extends React.Component {
         const res = await fetch('../api/search/'+this.props.keyword)
         const cities = await res.json()
         console.log(cities)
-          this.setState({product: cities["data"],partner: cities["partner"]});
+          this.setState({product: cities["data"],partner: cities["partner"],title:this.props.keyword});
           
     }
 

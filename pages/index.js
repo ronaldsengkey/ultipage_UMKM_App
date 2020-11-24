@@ -21,8 +21,9 @@ export default class PersonList extends React.Component {
           section2Data:[],
         };
       }
-  
     async componentDidMount() {
+      console.log('render home');
+
         const res = await fetch('api/getCity')
         const cities = await res.json()
           this.setState({city:cities});

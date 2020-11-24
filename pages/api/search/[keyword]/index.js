@@ -2,7 +2,6 @@
 import { Search } from 'services/axios.service';
 
 export default async ({ query: { keyword } }, res) => {
-  console.log("ini keyword"+keyword)
   const results = await Search(keyword)
   if (results)
   res.send(results)

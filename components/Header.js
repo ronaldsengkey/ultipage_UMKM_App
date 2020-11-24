@@ -56,13 +56,9 @@ export default function Navbar(props) {
       }}
     >
       
-        <Box textAlign='center' paddingTop='10px'><ReactSVG
-          src="img/ultimeal-logo.svg"
-          beforeInjection={(svg) => {
-            svg.setAttribute('style', 'height: 20px')
-          }}
-          
-        /></Box>
+        <Box textAlign='center' paddingTop='10px'>
+          <img src="img/ultipage.png" style={{height: '20px'}} />
+        </Box>
 <div className={classes.asd}>
       <Toolbar >
         <FormControl className={classes.formControl}>
@@ -76,7 +72,7 @@ export default function Navbar(props) {
           <MenuItem value="" disabled>
             Pilih kota
           </MenuItem>
-          {props.cities.map((e)=><MenuItem value={e.id}>{e.name}</MenuItem>)}
+          {props.cities.map((e, i)=><MenuItem key={i} value={e.id}>{e.name}</MenuItem>)}
         </Select>
       </FormControl>
       </Toolbar>
@@ -98,13 +94,9 @@ export function NavbarSearch() {
       }}
     >
       
-        <Box textAlign='center' paddingTop='10px'><ReactSVG
-          src="img/ultimeal-logo.svg"
-          beforeInjection={(svg) => {
-            svg.setAttribute('style', 'height: 20px')
-          }}
-          
-        /></Box>
+        <Box textAlign='center' paddingTop='10px'>
+          <img src="img/ultipage.png" style={{height: '20px'}} />
+        </Box>
 <div className={classes.asd}></div>
     </AppBar>
   );
