@@ -1,46 +1,19 @@
-import React from 'react';
-import Link from 'next/link';
-import { makeStyles, AppBar, Toolbar, Typography, Button, Box } from '@material-ui/core';
-import { ReactSVG } from 'react-svg';
+// components/NavBar.js
 
-const useStyles = makeStyles((theme) => ({
-  AppBar: {
-    boxShadow: '0px 0px 7px 0px rgba(0,0,0,0.2)'
-  }
-}))
 
-export default function Navbar() {
-  const classes = useStyles();
+import NavButton from "./NavButton";
 
-  return (
-    <AppBar
-      position="sticky"
-      color="default"
-      classes={{
-        root: classes.AppBar
-      }}
-    >
-      <Box paddingTop={3} paddingX={3} display="flex" justifyContent="center">
-        <ReactSVG
-          src="img/ultimeal-logo.svg"
-          beforeInjection={(svg) => {
-            svg.setAttribute('style', 'height: 20px')
-          }}
-        />
-        <Box display="flex" justifyContent="center">
+const NavBar = props => (
+  <div className="NavBar">
+    {props.navButtons.map(button => (
+      <NavButton
+        key={button.path}
+        path={button.path}
+        label={button.label}
+        icon={button.icon}
+      />
+    ))}
+  </div>
+);
 
-        </Box>
-      </Box>
-
-      <Toolbar>
-        <Typography variant="h6">
-          News
-        </Typography>
-        <Link href="/">
-          <a>Login</a>
-        </Link>
-        <Button color="inherit">Login</Button>
-      </Toolbar>
-    </AppBar>
-  );
-}
+export default NavBar;
