@@ -56,7 +56,7 @@ export default function Navbar(props) {
       }}
     >
       
-        <Box textAlign='center' paddingTop='10px'>
+        <Box textAlign='center' paddingTop='30px' marginBottom="-20px">
           <img src="img/ultipage.png" style={{height: '20px'}} />
         </Box>
 <div className={classes.asd}>
@@ -94,7 +94,7 @@ export function NavbarSearch() {
       }}
     >
       
-        <Box textAlign='center' paddingTop='10px'>
+        <Box textAlign='center' paddingTop='30px' marginBottom="-20px">
           <img src="img/ultipage.png" style={{height: '20px'}} />
         </Box>
 <div className={classes.asd}></div>
