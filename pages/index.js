@@ -46,6 +46,10 @@ export default class PersonList extends React.Component {
           const temp = bannerResp.map(a=>a.promo_path)
           
           this.setState({banner:temp});
+          const res3 = await fetch('api/getHomeSection/'+e)
+          const homeSection = await res3.json()
+          
+          this.setState({section1Title:homeSection.data[0].name,section2Title:homeSection.data[1].name,section1Data:homeSection.section1,section2Data:homeSection.section2});
     }
 
     
