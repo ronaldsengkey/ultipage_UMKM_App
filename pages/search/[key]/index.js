@@ -4,6 +4,7 @@ import { useRouter } from 'next/router'
 import {SearchResultLayout} from "../../../components/LayoutSearch";
 import MerchantGrid from "../../../components/grid"
 import {PartnerGrid} from "../../../components/grid"
+import CategoryRibbon from "../../../components/categoryRibbon";
 
 // function SearchResult({product,partner}){ 
 //   const router = useRouter()
@@ -39,7 +40,8 @@ export default class SearchResult extends React.Component {
         this.state = {
           product: [],
           partner:[],
-          title:""
+          title:"",
+          categoryMost:[]
         };
       }
 
@@ -56,7 +58,10 @@ export default class SearchResult extends React.Component {
         const cities = await res.json()
         console.log(cities)
           this.setState({product: cities["data"],partner: cities["partner"],title:this.props.keyword});
-          
+          const res2 = await fetch('../api/getCategoryMost')
+          const categoryMostResp = await res2.json()
+          const temp = categoryMostResp.map(a=>a["_id"])
+          this.setState({categoryMost:temp});
     }
 
 
@@ -66,6 +71,7 @@ export default class SearchResult extends React.Component {
       return (
         
         <SearchResultLayout title={this.state.title}>
+          <CategoryRibbon listCategory={this.state.categoryMost}></CategoryRibbon>
          <MerchantGrid data={this.state.product} title="Items"></MerchantGrid>
          <PartnerGrid data={this.state.partner} title="Partners"></PartnerGrid>
      </SearchResultLayout>
