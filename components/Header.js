@@ -30,6 +30,9 @@ const useStyles = makeStyles((theme) => ({
   },
   title:{
     fontSize:'16', fontWeight:"bold",marginLeft:'5px',marginTop:'2px'
+  },
+  topTitle:{
+    marginTop:'12px'
   }
 }))
 
@@ -113,14 +116,17 @@ export function SearchResultHeader(props) {
       color="default"
       
     >
+      <Box textAlign='center' paddingTop='25px' paddingBottom="20px">
       <Toolbar>
+      
           <IconButton edge="start" className={classes.menuButton} color="inherit" aria-label="menu"  onClick={() => router.back()} size='small'>
             <FaChevronLeft />
           </IconButton>
           <Typography className={classes.title}>
           {props.title}
           </Typography>
-        </Toolbar>  
+          
+        </Toolbar></Box>
     </AppBar>
   );
 }
