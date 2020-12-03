@@ -3,9 +3,9 @@ import { Card, CardActionArea, CardContent, Container, Box, Button, Typography, 
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Image from 'material-ui-image';
-import { fontSizeDownMd } from 'styles/style';
 
 const paddingDownMd = '8px';
+const fontSizeDownMd = 12.5;
 
 const useStyles = makeStyles((theme) => ({
   card: {

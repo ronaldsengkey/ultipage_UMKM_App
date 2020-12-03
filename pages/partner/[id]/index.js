@@ -24,19 +24,18 @@ const useStyles = makeStyles((theme) => ({
 const Partner = ({ responseCode, dataPartnerInit, dataProductsInit }) => {
   const classes = useStyles();
   const router = useRouter();
-  const { id, img, name, descriptions } = router.query;
-  const [ open, setOpen ] = useState(img ? true : false);
-  const [ page, setPage ] = useState(dataProductsInit ? 2 : false);
+  const { id } = router.query;
+  const [ open, setOpen ] = useState(false);
+  const [ page, setPage ] = useState(2);
   const [ loading, setLoading ] = useState(false);
   const [ products, setProducts] = useState(dataProductsInit);
   const [ modalContent, setModalContent] = useState({
     onlyImg: false,
-    img: img ? img : null,
-    name: name ? name : null,
-    descriptions: descriptions ? descriptions : null
+    img: null,
+    name: null,
+    descriptions: null
   });
-
-  console.log('dataPartnerInit', router.query);
+  console.log('dataPartnerInit', page);
 
   const handleFetchMoreData = async () => {
     if (page) {
@@ -122,26 +121,24 @@ const Partner = ({ responseCode, dataPartnerInit, dataProductsInit }) => {
   )
 }
 
-export async function getServerSideProps({ query: { id } }) {
+Partner.getInitialProps = async ({ query: { id } }) => {
   const result = await DetailPartner(id);
   const resultProducts = await Products(id, 1);
 
   if (result && result.data) {
     var dataPartner = result.data; //Success
-    var dataProducts = resultProducts.data ? resultProducts.data : null;
+    var dataProducts = resultProducts.data;
   } else {
     var dataPartner = {
-      message: result.responseMessage ? result.responseMessage : 'null',
+      message: result.responseMessage,
     };
-    var dataProducts = null;
+    var dataProducts = '';
   }
 
   return {
-    props: {
-      responseCode: result.responseCode ? result.responseCode : 'null',
-      dataPartnerInit: dataPartner,
-      dataProductsInit: dataProducts && dataProducts.length > 0 ? dataProducts : null
-    }
+    responseCode: result.responseCode,
+    dataPartnerInit: dataPartner,
+    dataProductsInit: dataProducts
   }
 }
 

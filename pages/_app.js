@@ -13,9 +13,9 @@ const defaultTheme = createMuiTheme({
     fontSize: 14
   },
   palette: {
-    // background: {
-    //   default: '#EFEFEF'
-    // },
+    background: {
+      default: '#EFEFEF'
+    },
     primary: {
       main: '#18A6AB',
     },
@@ -24,10 +24,17 @@ const defaultTheme = createMuiTheme({
 
 function MyApp({ Component, pageProps }) {
   return (
-    <MuiThemeProvider theme={defaultTheme}>
-      <CssBaseline />
-      <Component {...pageProps} />
-    </MuiThemeProvider>
+    <React.Fragment>
+      <Head>
+        <title>Ulti Page</title>
+        <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
+      </Head>
+      <MuiThemeProvider theme={defaultTheme}>
+        <CssBaseline />
+        {/* <Navbar /> */}
+        <Component {...pageProps} />
+      </MuiThemeProvider>
+    </React.Fragment>
   )
 }
 
