@@ -116,7 +116,7 @@ const PartnerContent = ({ partner_name, description, social_media, categories })
               root: classes.button,
               startIcon: classes.startIcon
             }}
-            onClick={() => window.open(`https://www.instagram.com/${socialMedia.instagram}/`)}
+            onClick={() => Insta.postMessage(`https://www.instagram.com/${socialMedia.instagram}/`)}
           >
             INSTAGRAM
           </Button>
