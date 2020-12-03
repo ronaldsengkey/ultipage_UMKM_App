@@ -19,16 +19,96 @@ export const Logs = async () => {
   }
 }
 
-export const DetailPartner = async (id) => {
+
+export const GetCategory = async () => {
   axiosConfig.headers = {
     signature: process.env.SIGNATURE,
-    param: JSON.stringify({ 'partnerId': id })
   }
-  const results = await axiosGetCancellable(`/outlet/ultipage/partner/`, axiosConfig);
+  const results = await axiosGetCancellable(`category`, axiosConfig);
+  if (!results) {
+    console.log('Canceled')
+  } else {
+    return results.data.data
+  }
+}
+
+export const GetCategoryMost = async () => {
+  axiosConfig.headers = {
+    signature: process.env.SIGNATURE,
+  }
+  const results = await axiosGetCancellable(`mostsearched`, axiosConfig);
+  if (!results) {
+    console.log('Canceled')
+  } else {
+    return results.data.data
+  }
+}
+
+export const Search = async (keyword) => {
+  axiosConfig.headers = {
+    signature: process.env.SIGNATURE,
+    param:JSON.stringify({category:keyword})
+  }
+  const results = await axiosGetCancellable(`product`, axiosConfig);
   if (!results) {
     console.log('Canceled')
   } else {
     return results.data
+  }
+}
+
+export const GetCity = async () => {
+  axiosConfig.headers = {
+    signature: process.env.SIGNATURE,
+  }
+  const results = await axiosGetCancellable(`city`, axiosConfig);
+  if (!results) {
+    console.log('Canceled')
+  } else {
+    return results.data.data
+  }
+}
+
+export const getPromo = async ({cityId}) => {
+  axiosConfig.headers = {
+    signature: process.env.SIGNATURE,
+    param:JSON.stringify({cityId:cityId})
+  }
+  const results = await axiosGetCancellable(`promo`, axiosConfig);
+  if (!results) {
+    console.log('Canceled')
+  } else {
+    return results.data.data
+  }
+}
+
+export const getHomeSection = async ({cityId}) => {
+  axiosConfig.headers = {
+    signature: process.env.SIGNATURE,
+    param:JSON.stringify({cityId:cityId})
+  }
+  const results = await axiosGetCancellable(`partnerhome`, axiosConfig);
+  if (!results) {
+    console.log('Canceled')
+  } else {
+    return results.data
+  }
+}
+
+export const DetailPartner = async (id) => {
+  if (id != 'null') {
+    axiosConfig.headers = {
+      signature: process.env.SIGNATURE,
+      param: JSON.stringify({ 'partnerId': id })
+    }
+    const results = await axiosGetCancellable(`partner`, axiosConfig);
+    if (!results) {
+      console.log('Canceled')
+    } else {
+      return results.data
+    }
+  } else {
+    return 'id partner required'
   }
 }
 
@@ -42,7 +122,7 @@ export const Products = async (id, page) => {
       'page': page
     })
   }
-  const results = await axiosGetCancellable(`/outlet/ultipage/product/`, axiosConfig);
+  const results = await axiosGetCancellable(`product`, axiosConfig);
   if (!results) {
     console.log('Canceled')
   } else {
@@ -55,7 +135,7 @@ export const EncryptLink = async (id) => {
     signature: process.env.SIGNATURE,
     param: JSON.stringify({ 'id': id })
   }
-  const results = await axiosGetCancellable(`/outlet/ultipage/encryptlink/`, axiosConfig);
+  const results = await axiosGetCancellable(`encryptlink`, axiosConfig);
   if (!results) {
     console.log('Canceled')
   } else {
@@ -68,7 +148,7 @@ export const DecryptLink = async (id) => {
     signature: process.env.SIGNATURE,
     param: JSON.stringify({ 'id': id })
   }
-  const results = await axiosGetCancellable(`/outlet/ultipage/decryptlink/`, axiosConfig);
+  const results = await axiosGetCancellable(`decryptlink`, axiosConfig);
   if (!results) {
     console.log('Canceled')
   } else {

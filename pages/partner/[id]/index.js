@@ -24,18 +24,19 @@ const useStyles = makeStyles((theme) => ({
 const Partner = ({ responseCode, dataPartnerInit, dataProductsInit }) => {
   const classes = useStyles();
   const router = useRouter();
-  const { id } = router.query;
-  const [ open, setOpen ] = useState(false);
-  const [ page, setPage ] = useState(2);
+  const { id, img, name, descriptions } = router.query;
+  const [ open, setOpen ] = useState(img ? true : false);
+  const [ page, setPage ] = useState(dataProductsInit ? 2 : false);
   const [ loading, setLoading ] = useState(false);
   const [ products, setProducts] = useState(dataProductsInit);
   const [ modalContent, setModalContent] = useState({
     onlyImg: false,
-    img: null,
-    name: null,
-    descriptions: null
+    img: img ? img : null,
+    name: name ? name : null,
+    descriptions: descriptions ? descriptions : null
   });
-  console.log('dataPartnerInit', page);
+
+  console.log('dataPartnerInit', router.query);
 
   const handleFetchMoreData = async () => {
     if (page) {
@@ -121,25 +122,27 @@ const Partner = ({ responseCode, dataPartnerInit, dataProductsInit }) => {
   )
 }
 
-Partner.getInitialProps = async ({ query: { id } }) => {
+export async function getServerSideProps({ query: { id } }) {
   const result = await DetailPartner(id);
   const resultProducts = await Products(id, 1);
 
   if (result) {
     if(result.data)
     var dataPartner = result.data; //Success
-    var dataProducts = resultProducts.data;
+    var dataProducts = resultProducts.data ? resultProducts.data : null;
   } else {
     var dataPartner = {
-      message: result.responseMessage,
+      message: result.responseMessage ? result.responseMessage : 'null',
     };
-    var dataProducts = '';
+    var dataProducts = null;
   }
 
   return {
-    responseCode: result.responseCode,
-    dataPartnerInit: dataPartner,
-    dataProductsInit: dataProducts
+    props: {
+      responseCode: result.responseCode ? result.responseCode : 'null',
+      dataPartnerInit: dataPartner,
+      dataProductsInit: dataProducts && dataProducts.length > 0 ? dataProducts : null
+    }
   }
 }
 
