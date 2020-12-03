@@ -125,7 +125,8 @@ Partner.getInitialProps = async ({ query: { id } }) => {
   const result = await DetailPartner(id);
   const resultProducts = await Products(id, 1);
 
-  if (result && result.data) {
+  if (result) {
+    if(result.data)
     var dataPartner = result.data; //Success
     var dataProducts = resultProducts.data;
   } else {
