@@ -4,7 +4,7 @@ import Carousel from "../components/carousel"
 import {PartnerGrid} from "../components/grid"
 import { List } from '@material-ui/core';
 import React from 'react';
-import { getPromo } from 'services/axios.service';
+import LoadingOverlay from 'react-loading-overlay'
 
 
 export default class PersonList extends React.Component {
@@ -19,6 +19,7 @@ export default class PersonList extends React.Component {
           section2Title:"",
           section1Data:[],
           section2Data:[],
+          loading:false
         };
       }
     async componentDidMount() {
@@ -38,6 +39,9 @@ export default class PersonList extends React.Component {
           
           this.setState({section1Title:homeSection.data[0].name,section2Title:homeSection.data[1].name,section1Data:homeSection.section1,section2Data:homeSection.section2});
     }
+    loadingOn = () => {
+      this.setState({loading:true})
+    };
 
      onChange=async(e) =>{
         
@@ -56,13 +60,19 @@ export default class PersonList extends React.Component {
     
     render() {
       return (
+        
         <Layout onChangeCity={this.onChange} cities={this.state.city}>
+          <LoadingOverlay
+  active={this.state.loading}
+  spinner
+  text='Loading your content...'
+  >
     <List style={{maxHeight: 'calc(90vh - 55px)', overflow: 'scroll',paddingTop:'0px'}}>
     <Carousel data={this.state.banner}></Carousel>
     
-    <PartnerGrid title={this.state.section1Title} data={this.state.section1Data}></PartnerGrid>
-    <PartnerGrid title={this.state.section2Title} data={this.state.section2Data}></PartnerGrid>
-    </List></Layout>
+    <PartnerGrid title={this.state.section1Title} data={this.state.section1Data} showLoading={this.loadingOn}></PartnerGrid>
+    <PartnerGrid title={this.state.section2Title} data={this.state.section2Data} showLoading={this.loadingOn}></PartnerGrid>
+    </List></LoadingOverlay></Layout>
       )
     }
   

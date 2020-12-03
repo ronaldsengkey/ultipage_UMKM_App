@@ -73,7 +73,7 @@ export default function NestedGrid(props) {
             }
             key={i}
           >
-            <Grid item xs={4}>
+            <Grid item xs={4} onClick={props.showLoading}>
               <Card>
                 <Image
                   src={a.path[0].f2}
@@ -101,7 +101,7 @@ export function PartnerGrid(props) {
       <Grid container spacing={2}>
         {(props.data||[]).map((a, i) => (
           <Link href={`/partner/${a.partner_id}`} key={i}>
-            <Grid item xs={4}>
+            <Grid item xs={4} onClick={props.showLoading}>
               <Card>
                 <Image
                   src={a.partner_logo}
