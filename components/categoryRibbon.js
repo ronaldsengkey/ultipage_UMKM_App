@@ -26,6 +26,9 @@ const useStyles = makeStyles((theme) => ({
   marginRight: '16px',
   marginLeft: '17px',
       },
+      indicator: {
+        backgroundColor: '#FFF'
+      }
   }));
   function a11yProps(index) {
     return {
@@ -47,7 +50,8 @@ export default function categoryRibbon(props) {
     onChange={handleChange}
     variant="scrollable"
     scrollButtons="off"
-    indicatorColor="transparent"
+    indicatorColor="primary"
+    classes={{ indicator: classes.indicator }}
   >
       <div className={classes.semua}  variant="contained">
       <p className={classes.textWhite}>Semua</p>
