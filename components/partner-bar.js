@@ -33,8 +33,8 @@ const PartnerHeaderBar = ({ partnerId, partnerName }) => {
     if (menuName === 'moreVert') {
       setIsOpen({...isOpen, moreVert: true})
     } else {
-      // setIsOpen({...isOpen, share: true})
-      // generateLink()
+      setIsOpen({...isOpen, share: true})
+      generateLink()
     }
   }
 
@@ -42,7 +42,7 @@ const PartnerHeaderBar = ({ partnerId, partnerName }) => {
     if (menuName === 'moreVert') {
       setIsOpen({...isOpen, moreVert: false})
     } else {
-      // setIsOpen({...isOpen, share: false})
+      setIsOpen({...isOpen, share: false})
     }
   }, [])
 
@@ -52,10 +52,20 @@ const PartnerHeaderBar = ({ partnerId, partnerName }) => {
       const newData = await req.json();
       setLink(newData.url ? window.location.origin + `/share/${newData.url}` : null)
       if (newData.url) {
-        Print.postMessage(window.location.origin + `/share/${newData.url}`);
+        try {
+          Print.postMessage(window.location.origin + `/share/${newData.url}`);
+        } catch (error) {
+          setLink(newData.url ? window.location.origin + `/share/${newData.url}` : 'error')
+        }
+        
       }
     } else {
-      Print.postMessage(window.location.origin + `/share/${link}`);
+      try {
+        Print.postMessage(window.location.origin + `/share/${link}`);
+      } catch (error) {
+        setLink(link.url ? window.location.origin + `/share/${link}` : 'error')
+      }
+      
     }
   }
 
@@ -66,8 +76,8 @@ const PartnerHeaderBar = ({ partnerId, partnerName }) => {
         <Box width={1} padding={1} display="flex" justifyContent="flex-end" alignItems="center">
           <IconButton
             ref={shareRef}
-            // disabled={isOpen.share}
-            // onClick={() => handleToggle('share')}
+            disabled={isOpen.share}
+            onClick={() => handleToggle('share')}
             onClick={() => generateLink()}
             classes={{
               root: classes.iconButton,
@@ -90,7 +100,7 @@ const PartnerHeaderBar = ({ partnerId, partnerName }) => {
           </IconButton>
 
           <PopperMenu menuItem={OPTIONS} isOpen={isOpen.moreVert} ref={moreVertRef} onClose={() => handleClose('moreVert')} />
-          {/* <PopperMenu
+          <PopperMenu
             menuItem={SHARE}
             isOpen={isOpen.share}
             ref={shareRef}
@@ -99,7 +109,7 @@ const PartnerHeaderBar = ({ partnerId, partnerName }) => {
               url: link,
               partnerName: partnerName
             }}
-          /> */}
+          />
         </Box>
       </Toolbar>
     </AppBar>

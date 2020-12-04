@@ -1,11 +1,11 @@
 import React, { forwardRef, memo } from 'react';
 import { MenuItem, ClickAwayListener, Grow, Paper, Popper, MenuList, Typography, ListItemIcon, Box } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-// import {
-//   FacebookShareButton,
-//   TwitterShareButton,
-//   WhatsappShareButton,
-// } from 'react-share';
+import {
+  FacebookShareButton,
+  TwitterShareButton,
+  WhatsappShareButton,
+} from 'react-share';
 
 const useStyles = makeStyles((theme) => ({
   shareIcon: {
@@ -47,7 +47,7 @@ const PopperMenu = forwardRef(({ menuItem, isOpen, add = null, onClose }, ref) =
               <MenuList autoFocusItem={isOpen}>
                 {menuItem && menuItem.map((menu, i) => (
                   <MenuItem key={i} onClick={onClickClose} classes={{root: classes.menuItem}}>
-                    {/* {menu.label === 'Facebook' ? (
+                    {menu.label === 'Facebook' ? (
                     <FacebookShareButton
                       url={add.url}
                       quote={`Visit Ultipage ${add.partnerName}`}
@@ -84,7 +84,7 @@ const PopperMenu = forwardRef(({ menuItem, isOpen, add = null, onClose }, ref) =
                         <Typography variant="body2">{menu.label}</Typography>
                       </Box>
                     </WhatsappShareButton>
-                    ) : ( */}
+                    ) : (
                       <>
                         {menu.icon &&
                         <ListItemIcon>
@@ -93,7 +93,7 @@ const PopperMenu = forwardRef(({ menuItem, isOpen, add = null, onClose }, ref) =
                         }
                         <Typography variant="body2">{menu.label}</Typography>
                       </>
-                    {/* )} */}
+                     )} 
                   </MenuItem>
                 ))}
               </MenuList>
