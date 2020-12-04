@@ -53,8 +53,8 @@ const PartnerHeaderBar = ({ partnerId, partnerName }) => {
       setLink(newData.url ? window.location.origin + `/share/${newData.url}` : null)
       if (newData.url) {
         try {
-          // Print.postMessage(window.location.origin + `/share/${newData.url}`);
-          Print.postMessage(`${newData.url}`);
+          Print.postMessage(window.location.origin + `/share/${newData.url}`);
+          // Print.postMessage(`${newData.url}`);
         } catch (error) {
           setLink(newData.url ? window.location.origin + `/share/${newData.url}` : 'error')
         }
