@@ -131,11 +131,7 @@ const PartnerContent = ({ partner_name, description, social_media, categories })
               root: classes.button,
               startIcon: classes.startIcon
             }}
-<<<<<<< HEAD
             onClick={() => Insta.postMessage(`https://wa.me/${socialMedia.whatsapp.charAt(0) === '0' ? '62'+ socialMedia.whatsapp.substring(1) : socialMedia.whatsapp}?text=halo%20admin%20mau%20tanya`)}
-=======
-            onClick={() => Insta.postMessage(`https://wa.me/${socialMedia.whatsapp.charAt(0) === '0' ? '62'+ socialMedia.whatsapp.substring(1) : socialMedia.whatsapp}`)}
->>>>>>> 742772dcfabf526e4bd5a303ddd6d94ea3f18cc2
           >
             WHATSAPP
           </Button>
