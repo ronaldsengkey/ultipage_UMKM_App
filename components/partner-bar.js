@@ -53,10 +53,14 @@ const PartnerHeaderBar = ({ partnerId, partnerName }) => {
       setLink(newData.url ? window.location.origin + `/share/${newData.url}` : null)
       if (newData.url) {
         try {
+          console.log("ini masok try"+newData.url)
           Print.postMessage(window.location.origin + `/share/${newData.url}`);
           // Print.postMessage(`${newData.url}`);
+          
         } catch (error) {
-          setLink(newData.url ? window.location.origin + `/share/${newData.url}` : 'error')
+          console.log(newData.url)
+          console.log(window.location.origin + `/share/${newData.url}`)
+          // setLink(newData.url ? window.location.origin + `/share/${newData.url}` : 'error')
         }
         
       }
@@ -64,7 +68,9 @@ const PartnerHeaderBar = ({ partnerId, partnerName }) => {
       try {
         Print.postMessage(`${link}`);
       } catch (error) {
-        setLink(link.url ? window.location.origin + `/share/${link}` : 'error')
+        console.log("ini else catch"+link)
+        console.log("ini else catch"+window.location.origin + `/share/${link}`)
+        // setLink(link ? window.location.origin + `/share/${link}` : 'error')
       }
       
     }
