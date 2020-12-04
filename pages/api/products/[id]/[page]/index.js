@@ -3,7 +3,7 @@ import { Products } from 'services/axios.service';
 
 export default async ({ query: { id, page } }, res) => {
   const results = await Products(parseInt(id), parseInt(page))
-  if (results) {
+  if (results.data) {
     res.send(results.data)
   } else {
     res.send(results.responseCode)
