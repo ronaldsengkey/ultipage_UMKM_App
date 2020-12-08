@@ -8,6 +8,7 @@ import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import IconButton from '@material-ui/core/IconButton';
 import MenuIcon from '@material-ui/icons/Menu';
 import { useRouter } from 'next/router'
+import SelectSearch from 'react-select-search/dist/cjs/index.js';
 
 const useStyles = makeStyles((theme) => ({
   AppBar: {
@@ -26,7 +27,9 @@ const useStyles = makeStyles((theme) => ({
     fontSize:12
   },
   asd: {
-    height:40
+    height:40,
+    marginLeft:'-20px',
+    marginBottom:-5
   },
   title:{
     fontSize:'16', fontWeight:"bold",marginLeft:'5px',marginTop:'2px'
@@ -42,8 +45,8 @@ export default function Navbar(props) {
   const [city, setCity] = React.useState('');
 
   const handleChange = (event) => {
-    setAge(event.target.value);
-    props.onChangeCity(event.target.value);
+    setAge(event);
+    props.onChangeCity(event);
   };
 
   const fetchCity = (event) => {
@@ -65,18 +68,27 @@ export default function Navbar(props) {
 <div className={classes.asd}>
       <Toolbar >
         <FormControl className={classes.formControl}>
-        <Select
+        
+        {props.cities!=[]?<SelectSearch
+        
+        options={props.cities.map((e, i)=>({'value': e.id, 'name': e.name }))}
+        search
+        placeholder="Pilih Kota"
+        onChange={handleChange}
+    />:<div></div>}
+        {/* <Select
           value={age}
           onChange={handleChange}
           displayEmpty
           className={classes.selectEmpty}
           inputProps={{ 'aria-label': 'Without label' }}
         >
+    
           <MenuItem value="" disabled>
             Pilih kota
           </MenuItem>
           {props.cities.map((e, i)=><MenuItem key={i} value={e.id}>{e.name}</MenuItem>)}
-        </Select>
+        </Select> */}
       </FormControl>
       </Toolbar>
       </div>

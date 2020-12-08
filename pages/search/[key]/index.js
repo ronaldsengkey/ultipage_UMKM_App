@@ -89,9 +89,10 @@ export default class SearchResult extends React.Component {
   >
         <SearchResultLayout title={this.state.title}>
           <CategoryRibbon listCategory={this.state.categoryMost}></CategoryRibbon>
+          <div style={{minHeight:"80vh"}}> 
          <MerchantGrid data={this.state.product} title="Items" showLoading={this.loadingOn}></MerchantGrid>
-         <PartnerGrid data={this.state.partner} title="Partners" showLoading={this.loadingOn}></PartnerGrid>
-         
+         <PartnerGrid data={this.state.partner} title="Partners" showLoading={this.loadingOn} ></PartnerGrid>
+         </div>
      </SearchResultLayout></LoadingOverlay>
       )
     }

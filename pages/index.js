@@ -25,19 +25,34 @@ export default class PersonList extends React.Component {
     async componentDidMount() {
       console.log('render home');
 
-        const res = await fetch('api/getCity')
-        const cities = await res.json()
-          this.setState({city:cities});
-          const res2 = await fetch('api/getBanner/'+this.state.cityId)
-          const bannerResp = await res2.json()
-          const temp = bannerResp.map(a=>a.promo_path)
-          
-          this.setState({banner:temp});
+        // const [res, res2, res3] = await Promise.all([
+        //   fetch('api/getCity'),
+        //   fetch('api/getBanner/'+this.state.cityId),
+        //   fetch('api/getHomeSection/'+this.state.cityId),
+        // ]);
+      
+        // const cities = await res.json()
+        // const bannerResp = await res2.json()
+        // const homeSection = await res3.json()
+        // this.setState({city:cities,banner:bannerResp.map(a=>a.promo_path),section1Title:homeSection.data[0].name,section2Title:homeSection.data[1].name,section1Data:homeSection.section1,section2Data:homeSection.section2});
 
-          const res3 = await fetch('api/getHomeSection/'+this.state.cityId)
-          const homeSection = await res3.json()
+        const res = await fetch('api/getAllHome/null')
+        const responseAll = await res.json()
+        const cities = responseAll[0]
+        const bannerResp = responseAll[1]
+        const homeSection = responseAll[2]
+        this.setState({city:cities,banner:bannerResp.map(a=>a.promo_path),section1Title:homeSection.data[0].name,section2Title:homeSection.data[1].name,section1Data:homeSection.section1,section2Data:homeSection.section2});
+        //   this.setState({city:cities});
+          // const res2 = await fetch('api/getBanner/'+this.state.cityId)
+          // const bannerResp = await res2.json()
+          // const temp = bannerResp.map(a=>a.promo_path)
           
-          this.setState({section1Title:homeSection.data[0].name,section2Title:homeSection.data[1].name,section1Data:homeSection.section1,section2Data:homeSection.section2});
+          // this.setState({banner:temp});
+
+          // const res3 = await fetch('api/getHomeSection/'+this.state.cityId)
+          // const homeSection = await res3.json()
+          
+          // this.setState({section1Title:homeSection.data[0].name,section2Title:homeSection.data[1].name,section1Data:homeSection.section1,section2Data:homeSection.section2});
     }
     loadingOn = () => {
       this.setState({loading:true})
@@ -45,15 +60,21 @@ export default class PersonList extends React.Component {
 
      onChange=async(e) =>{
         
-        const res2 =await fetch('api/getBanner/'+e)
-        const bannerResp = await res2.json()
-          const temp = bannerResp.map(a=>a.promo_path)
+        // const res2 =await fetch('api/getBanner/'+e)
+        // const bannerResp = await res2.json()
+        //   const temp = bannerResp.map(a=>a.promo_path)
           
-          this.setState({banner:temp});
-          const res3 = await fetch('api/getHomeSection/'+e)
-          const homeSection = await res3.json()
+        //   this.setState({banner:temp});
+        //   const res3 = await fetch('api/getHomeSection/'+e)
+        //   const homeSection = await res3.json()
           
-          this.setState({section1Title:homeSection.data[0].name,section2Title:homeSection.data[1].name,section1Data:homeSection.section1,section2Data:homeSection.section2});
+        //   this.setState({section1Title:homeSection.data[0].name,section2Title:homeSection.data[1].name,section1Data:homeSection.section1,section2Data:homeSection.section2});
+        const res = await fetch('api/getAllHome/'+e)
+        const responseAll = await res.json()
+        const cities = responseAll[0]
+        const bannerResp = responseAll[1]
+        const homeSection = responseAll[2]
+        this.setState({city:cities,banner:bannerResp.map(a=>a.promo_path),section1Title:homeSection.data[0].name,section2Title:homeSection.data[1].name,section1Data:homeSection.section1,section2Data:homeSection.section2});
     }
 
     

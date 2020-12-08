@@ -1,4 +1,5 @@
 import { axiosGetCancellable } from 'helpers/axios.helper';
+import axios from 'axios';
 
 const axiosConfig = {
   baseURL: process.env.API_BASE_URL,
@@ -57,11 +58,38 @@ export const Search = async (keyword) => {
   }
 }
 
+//API_BASE_URL=https://sandbox.api.ultipay.id:8443/outlet/ultipage/
+export const GetAllHome = async ({cityId}) => {
+  const requestOne = axios.get("city",{ headers: { signature: process.env.SIGNATURE },baseURL: process.env.API_BASE_URL });
+const requestTwo = axios.get("promo",{ headers: { signature: process.env.SIGNATURE,param:JSON.stringify({cityId:cityId}) },baseURL: process.env.API_BASE_URL });
+const requestThree = axios.get("partnerhome",{ headers: { signature: process.env.SIGNATURE,param:JSON.stringify({cityId:cityId}) },baseURL: process.env.API_BASE_URL });
+
+ return await axios
+  .all([requestOne, requestTwo, requestThree])
+  .then(
+    axios.spread((...responses) => {
+      const responseOne = responses[0];
+      const responseTwo = responses[1];
+      const responesThree = responses[2];
+
+      // use/access the results
+      // console.log(responseOne.data, responseTwo.data, responesThree.data);
+      console.log("ini mau return");
+      return responses;
+    })
+  )
+  .catch(errors => {
+    // react on errors.
+    console.error(errors);
+  });
+}
+
 export const GetCity = async () => {
   axiosConfig.headers = {
     signature: process.env.SIGNATURE,
   }
   const results = await axiosGetCancellable(`city`, axiosConfig);
+  console.log(results);
   if (!results) {
     console.log('Canceled')
   } else {
@@ -75,6 +103,7 @@ export const getPromo = async ({cityId}) => {
     param:JSON.stringify({cityId:cityId})
   }
   const results = await axiosGetCancellable(`promo`, axiosConfig);
+  console.log(results);
   if (!results) {
     console.log('Canceled')
   } else {
@@ -88,6 +117,7 @@ export const getHomeSection = async ({cityId}) => {
     param:JSON.stringify({cityId:cityId})
   }
   const results = await axiosGetCancellable(`partnerhome`, axiosConfig);
+  console.log(results);
   if (!results) {
     console.log('Canceled')
   } else {
