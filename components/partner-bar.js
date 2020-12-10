@@ -94,7 +94,7 @@ const PartnerHeaderBar = ({ partnerId, partnerName }) => {
             <ShareIcon />
           </IconButton>
 
-          <IconButton
+          {/* <IconButton
             ref={moreVertRef}
             disabled={isOpen.moreVert}
             onClick={() => handleToggle('moreVert')}
@@ -104,7 +104,7 @@ const PartnerHeaderBar = ({ partnerId, partnerName }) => {
             }}
           >
             <MoreVertIcon />
-          </IconButton>
+          </IconButton> */}
 
           <PopperMenu menuItem={OPTIONS} isOpen={isOpen.moreVert} ref={moreVertRef} onClose={() => handleClose('moreVert')} />
           <PopperMenu
