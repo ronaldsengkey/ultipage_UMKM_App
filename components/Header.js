@@ -28,7 +28,11 @@ const useStyles = makeStyles((theme) => ({
     fontSize:12
   },
   asd: {
-    height:48,
+    height:50,
+    marginBottom:-5
+  },
+  asdNew: {
+    height:35,
     marginBottom:-5
   },
   title:{
@@ -62,7 +66,7 @@ export default function Navbar(props) {
       }}
     >
       
-        <Box textAlign='center' paddingTop='22px'>
+        <Box textAlign='center' paddingTop='20px'>
           <img src="img/ultipage.png" style={{height: '20px'}} />
         </Box>
 <div className={classes.asd}>
@@ -109,10 +113,10 @@ export function NavbarSearch() {
       }}
     >
       
-        <Box textAlign='center' paddingTop='22px'>
+        <Box textAlign='center' paddingTop='35px'>
           <img src="img/ultipage.png" style={{height: '20px'}} />
         </Box>
-<div className={classes.asd}></div>
+<div className={classes.asdNew}></div>
     </AppBar>
   );
 }
