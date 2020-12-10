@@ -61,7 +61,7 @@ export default function NestedGrid(props) {
     <Container>
       <p className={classes.topText}>{props.title}</p>
       <Grid container spacing={2}>
-        {(props.data||[]).map((a, i) => (
+        {(props.data!="404"?props.data:[]).map((a, i) => (
           <Link href={{
             pathname: `/partner/${a.partner_id}`,
             query: {
@@ -99,7 +99,7 @@ export function PartnerGrid(props) {
 <Container>
   <p className={classes.topText}>{props.title}</p>
       <Grid container spacing={2}>
-        {(props.data||[]).map((a, i) => (
+        {(props.data!="404"?props.data:[]).map((a, i) => (
           <Link href={`/partner/${a.partner_id}`} key={i}>
             <Grid item xs={4} onClick={props.showLoading}>
               <Card>
