@@ -88,11 +88,12 @@ export default class PersonList extends React.Component {
   spinner
   text='Loading your content...'
   >
-    <List style={{maxHeight: 'calc(90vh - 55px)', overflow: 'scroll',paddingTop:'0px'}}>
+    <List style={{maxHeight: 'calc(90vh - 55px)',minHeight:"90vh", overflow: 'scroll',paddingTop:'0px'}}>
     <Carousel data={this.state.banner}></Carousel>
     
     <PartnerGrid title={this.state.section1Title} data={this.state.section1Data} showLoading={this.loadingOn}></PartnerGrid>
     <PartnerGrid title={this.state.section2Title} data={this.state.section2Data} showLoading={this.loadingOn}></PartnerGrid>
+    
     </List></LoadingOverlay></Layout>
       )
     }
