@@ -71,10 +71,10 @@ export default class PersonList extends React.Component {
         //   this.setState({section1Title:homeSection.data[0].name,section2Title:homeSection.data[1].name,section1Data:homeSection.section1,section2Data:homeSection.section2});
         const res = await fetch('api/getAllHome/'+e)
         const responseAll = await res.json()
-        const cities = responseAll[0]
+        // const cities = responseAll[0]
         const bannerResp = responseAll[1]
         const homeSection = responseAll[2]
-        this.setState({city:cities,banner:bannerResp.map(a=>a.promo_path),section1Title:homeSection.data[0].name,section2Title:homeSection.data[1].name,section1Data:homeSection.section1,section2Data:homeSection.section2});
+        this.setState({banner:bannerResp.map(a=>a.promo_path),section1Title:homeSection.data[0].name,section2Title:homeSection.data[1].name,section1Data:homeSection.section1,section2Data:homeSection.section2});
     }
 
     
