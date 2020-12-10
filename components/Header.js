@@ -12,23 +12,23 @@ import SelectSearch from 'react-select-search/dist/cjs/index.js';
 
 const useStyles = makeStyles((theme) => ({
   AppBar: {
-    boxShadow: '0px 0px 7px 0px rgba(0,0,0,0.2)'
+    boxShadow: '0px 0px 7px 0px rgba(0,0,0,0.2)',
+    backgroundColor:'white'
   },
   Logo123:{
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop:'20px'
+    marginTop:0
   },
   formControl: {
-    minWidth: 120,
-    height:40
+    // minWidth: 120,
+    height:48
   },
   selectEmpty: {
     fontSize:12
   },
   asd: {
-    height:40,
-    marginLeft:'-20px',
+    height:48,
     marginBottom:-5
   },
   title:{
@@ -62,7 +62,7 @@ export default function Navbar(props) {
       }}
     >
       
-        <Box textAlign='center' paddingTop='25px' marginBottom="-20px">
+        <Box textAlign='center' paddingTop='22px'>
           <img src="img/ultipage.png" style={{height: '20px'}} />
         </Box>
 <div className={classes.asd}>
@@ -109,7 +109,7 @@ export function NavbarSearch() {
       }}
     >
       
-        <Box textAlign='center' paddingTop='25px' marginBottom="-20px">
+        <Box textAlign='center' paddingTop='22px'>
           <img src="img/ultipage.png" style={{height: '20px'}} />
         </Box>
 <div className={classes.asd}></div>
@@ -126,7 +126,9 @@ export function SearchResultHeader(props) {
     <AppBar
       position="sticky"
       color="default"
-      
+      classes={{
+        root: classes.AppBar
+      }}
     >
       <Box textAlign='center' paddingTop='25px' paddingBottom="20px">
       <Toolbar>

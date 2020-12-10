@@ -27,7 +27,7 @@
  * Main wrapper
  */
  .select-search {
-  width: 140px; // lebar box input mb hasil
+  width: 90vw; // lebar box input mb hasil
   position: relative;
   font-family: 'Nunito Sans', sans-serif;
   box-sizing: border-box;
@@ -53,7 +53,7 @@
   display: inline-block;
   position: absolute;
   top: calc(50% - 9px);
-  right: 5px;
+  right: 15px;
   width: 11px;
   height: 11px;
 }
@@ -65,7 +65,7 @@
   display: block;
   height: 25px;
   width: 100%;
-  padding: 0 20px 0 5px;
+  padding: 0 30px 0 5px;
   background: #fff;
   border: 1px solid transparent;
   box-shadow: 0 .0625rem .125rem rgba(0, 0, 0, 0.15);
@@ -123,7 +123,7 @@
 .select-search__not-found { //ini per row / widget kota
   display: block;
   height: 45px;
-  width: 150px;
+  width: 90vw;
   padding: 0 0px;
   // margin-top: -5px;
   padding-left: 5px;
