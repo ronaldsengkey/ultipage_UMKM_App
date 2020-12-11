@@ -12,7 +12,8 @@ import SelectSearch from 'react-select-search/dist/cjs/index.js';
 
 const useStyles = makeStyles((theme) => ({
   AppBar: {
-    boxShadow: '0px 0px 7px 0px rgba(0,0,0,0.2)',
+    boxShadow: '0px 0px 0px 0px rgba(0,0,0,0.2)',
+    borderBottom: '#EFEFF0 1px solid',
     backgroundColor:'white'
   },
   Logo123:{

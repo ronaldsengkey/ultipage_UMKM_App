@@ -58,7 +58,7 @@ export default function NestedGrid(props) {
   
 
   return (
-    <Container>
+    <Container style={{backgroundColor:'white'}}>
       <p className={classes.topText}>{props.title}</p>
       <Grid container spacing={2}>
         {(props.data!="404"?props.data:[]).map((a, i) => (
@@ -96,7 +96,7 @@ export function PartnerGrid(props) {
   const classes = useStyles();
 
   return (
-<Container>
+<Container style={{backgroundColor:'white'}}>
   <p className={classes.topText}>{props.title}</p>
       <Grid container spacing={2}>
         {(props.data!="404"?props.data:[]).map((a, i) => (

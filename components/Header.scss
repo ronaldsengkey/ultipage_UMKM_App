@@ -67,8 +67,9 @@
   width: 100%;
   padding: 0 30px 0 5px;
   background: #EFEFEF;
-  border: 1px solid transparent;
-  box-shadow: 0 .0625rem .125rem rgba(0, 0, 0, 0.15);
+  border: 1px solid #EFEFF0;
+  // box-shadow: 0 .0625rem .125rem rgba(0, 0, 0, 0.15);
+  box-shadow: 0;
   border-radius: 3px;
   outline: none;
   font-family: 'Noto Sans', sans-serif;
