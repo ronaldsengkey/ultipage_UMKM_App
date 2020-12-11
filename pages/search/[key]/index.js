@@ -68,9 +68,13 @@ export default class SearchResult extends React.Component {
       
       console.log("ini title"+this.props.keyword)
         const res = await fetch('../api/search/'+this.props.keyword)
-        const cities = await res.json()
-        console.log(cities)
-          this.setState({product: cities["data"],partner: cities["partner"],title:this.props.keyword});
+        const resJson = await res.json()
+        console.log("ini resJson")
+        console.log(resJson)
+        if(resJson['responseCode']!='404')
+          this.setState({product: resJson["data"],partner: resJson["partner"],title:this.props.keyword});
+          else
+          this.setState({title:this.props.keyword});
           const res2 = await fetch('../api/getCategoryMost')
           const categoryMostResp = await res2.json()
           const temp = categoryMostResp.map(a=>a["_id"])
