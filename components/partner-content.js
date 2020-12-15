@@ -116,7 +116,7 @@ const PartnerContent = ({ partner_name, description, social_media, categories })
               root: classes.button,
               startIcon: classes.startIcon
             }}
-            onClick={() => Insta.postMessage(`instagram://user?username=${socialMedia.instagram}`)}
+            onClick={() => Insta.postMessage(`instagram://user?username=${socialMedia.instagram.replace('/?hl=id','')}`)}
           >
             INSTAGRAM
           </Button>
