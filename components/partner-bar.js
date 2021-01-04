@@ -60,7 +60,7 @@ const PartnerHeaderBar = ({ partnerId, partnerName }) => {
         } catch (error) {
           console.log(newData.url)
           console.log(window.location.origin + `/share/${newData.url}`)
-          // setLink(newData.url ? window.location.origin + `/share/${newData.url}` : 'error')
+          setLink(newData.url ? window.location.origin + `/share/${newData.url}` : 'error')
         }
         
       }
@@ -70,7 +70,7 @@ const PartnerHeaderBar = ({ partnerId, partnerName }) => {
       } catch (error) {
         console.log("ini else catch"+link)
         console.log("ini else catch"+window.location.origin + `/share/${link}`)
-        // setLink(link ? window.location.origin + `/share/${link}` : 'error')
+        setLink(link ? window.location.origin + `/share/${link}` : 'error')
       }
       
     }
@@ -85,7 +85,7 @@ const PartnerHeaderBar = ({ partnerId, partnerName }) => {
             ref={shareRef}
             disabled={isOpen.share}
             onClick={() => handleToggle('share')}
-            onClick={() => generateLink()}
+            // onClick={() => generateLink()}
             classes={{
               root: classes.iconButton,
               disabled: classes.iconButtonDisabled
@@ -106,7 +106,7 @@ const PartnerHeaderBar = ({ partnerId, partnerName }) => {
             <MoreVertIcon />
           </IconButton> */}
 
-          <PopperMenu menuItem={OPTIONS} isOpen={isOpen.moreVert} ref={moreVertRef} onClose={() => handleClose('moreVert')} />
+          {/* <PopperMenu menuItem={OPTIONS} isOpen={isOpen.moreVert} ref={moreVertRef} onClose={() => handleClose('moreVert')} /> */}
           <PopperMenu
             menuItem={SHARE}
             isOpen={isOpen.share}

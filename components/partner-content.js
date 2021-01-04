@@ -101,7 +101,11 @@ const PartnerContent = ({ partner_name, description, social_media, categories })
               root: classes.button,
               startIcon: classes.startIcon
             }}
-            onClick={() => Insta.postMessage(`fb://profile/${socialMedia.facebook}/`)}
+            onClick={() => {try{Insta.postMessage(`fb://facewebmodal/f?href=${socialMedia.facebook}/`)}
+          catch(e){
+            window.open(`https://www.facebook.com/${socialMedia.facebook}/`)
+          }
+          }}
           >
             FACEBOOK
           </Button>
@@ -116,7 +120,13 @@ const PartnerContent = ({ partner_name, description, social_media, categories })
               root: classes.button,
               startIcon: classes.startIcon
             }}
-            onClick={() => Insta.postMessage(`instagram://user?username=${socialMedia.instagram.replace('/?hl=id','')}`)}
+            onClick={() => {try{Insta.postMessage(`instagram://user?username=${socialMedia.instagram.replace('/?hl=id','')}`)}
+          catch(e){
+            // console.log("ini error")
+            window.open(`https://www.instagram.com/${socialMedia.instagram.replace('/?hl=id','')}`)
+            
+          }
+          }}
           >
             INSTAGRAM
           </Button>
@@ -132,7 +142,11 @@ const PartnerContent = ({ partner_name, description, social_media, categories })
               startIcon: classes.startIcon
             }}
             // onClick={() => Insta.postMessage(`https://wa.me/${socialMedia.whatsapp.charAt(0) === '0' ? '62'+ socialMedia.whatsapp.substring(1) : socialMedia.whatsapp}?text=halo%20admin%20mau%20tanya`)}
-            onClick={() => Insta.postMessage(`whatsapp://send?phone=${socialMedia.whatsapp.charAt(0) === '0' ? '62'+ socialMedia.whatsapp.substring(1) : socialMedia.whatsapp}&text=halo%20admin%20mau%20tanya`)}
+            onClick={() => {try{Insta.postMessage(`whatsapp://send?phone=${socialMedia.whatsapp.charAt(0) === '0' ? '62'+ socialMedia.whatsapp.substring(1) : socialMedia.whatsapp}&text=halo%20admin%20mau%20tanya`)}
+          catch(e){
+            window.open(`https://wa.me/${socialMedia.whatsapp.charAt(0) === '0' ? '62'+ socialMedia.whatsapp.substring(1) : socialMedia.whatsapp}?text=halo%20admin%20mau%20tanya`)
+          }
+          }}
           >
             WHATSAPP
           </Button>
