@@ -107,7 +107,7 @@ export function NavbarSearch() {
 
   return (
     <AppBar
-      position="sticky"
+      position="fixed"
       color="default"
       classes={{
         root: classes.AppBar

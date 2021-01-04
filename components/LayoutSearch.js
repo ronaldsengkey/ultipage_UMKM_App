@@ -11,7 +11,7 @@ const Layout = props => {
   const appTitle = `UMKM`;
 
   return (
-    <div className="Layout">
+    <div className="LayoutSearch">
       <Head>
       <title>UMKM</title>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
